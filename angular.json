@@ -3,5 +3,46 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-  }
+    "extras": {
+      "projectType": "library",
+      "root": "projects/extras",
+      "sourceRoot": "projects/extras/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/extras/tsconfig.lib.json",
+            "project": "projects/extras/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/extras/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/extras/src/test.ts",
+            "tsConfig": "projects/extras/tsconfig.spec.json",
+            "karmaConfig": "projects/extras/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/extras/tsconfig.lib.json",
+              "projects/extras/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "extras"
 }

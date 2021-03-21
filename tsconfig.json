@@ -6,6 +6,12 @@
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
+    "paths": {
+      "extras": [
+        "dist/extras/extras",
+        "dist/extras"
+      ]
+    },
     "downlevelIteration": true,
     "experimentalDecorators": true,
     "moduleResolution": "node",
