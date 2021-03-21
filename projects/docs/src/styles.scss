@@ -1,1 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import '~@angular/material/theming';
+
+@import './styles/constants';
+@import './styles/reboot';
+
+@include mat-core();
+
+// Define the default theme.
+$primary: mat-palette($mat-indigo);
+$accent: mat-palette($mat-pink, A200, A100, A400);
+$theme: mat-light-theme($primary, $accent);
+
+@include angular-material-theme($theme);
+
+.docs-theme-dark {
+    $primary: mat-palette($mat-pink);
+    $accent: mat-palette($mat-blue-grey);
+    $theme: mat-dark-theme($primary, $accent);
+
+    @include angular-material-theme($theme);
+    // @include extensions-docs-app-theme($theme);
+}
