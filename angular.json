@@ -6,8 +6,8 @@
     "extras": {
       "projectType": "library",
       "root": "projects/extras",
-      "sourceRoot": "projects/extras/src",
-      "prefix": "lib",
+      "sourceRoot": "projects/extras",
+      "prefix": "pme",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
@@ -24,7 +24,7 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/extras/src/test.ts",
+            "main": "projects/extras/test.ts",
             "tsConfig": "projects/extras/tsconfig.spec.json",
             "karmaConfig": "projects/extras/karma.conf.js"
           }
@@ -157,5 +157,8 @@
       }
     }
   },
-  "defaultProject": "extras"
+  "defaultProject": "extras",
+  "cli": {
+    "analytics": false
+  }
 }

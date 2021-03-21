@@ -1,0 +1,13 @@
+<mat-form-field class="u-full-width" [appearance]="appearance">
+    <mat-label>{{ label }}</mat-label>
+    <mat-select [formControl]="input" placeholder="Status" [multiple]="multiple">
+        <mat-select-trigger>
+            {{ displayLabel && displayLabel.join(', ') }}
+            <button class="clear" *ngIf="clearable" mat-button mat-icon-button (click)="clear($event)">
+                <mat-icon matSuffix fontSet="fal" fontIcon="fa-times"></mat-icon>
+            </button>
+        </mat-select-trigger>
+
+        <mat-option *ngFor="let item of items" [value]="item[bindValue]">{{ item[bindLabel] }}</mat-option>
+    </mat-select>
+</mat-form-field>
