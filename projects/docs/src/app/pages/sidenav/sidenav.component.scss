@@ -1,6 +1,6 @@
 @import '../../../styles/constants';
 
-app-component-sidenav {
+:host {
     display: flex;
     flex-direction: column;
     flex: 1;

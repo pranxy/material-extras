@@ -7,7 +7,7 @@ import { Title } from '@angular/platform-browser';
 @Injectable({ providedIn: 'root' })
 export class ComponentPageTitle {
     _title = '';
-    _originalTitle = 'Angular Material Extensions library';
+    _originalTitle = 'Angular Material Extras library';
 
     get title(): string {
         return this._title;
@@ -16,7 +16,7 @@ export class ComponentPageTitle {
     set title(title: string) {
         this._title = title && this.capitalizeTitle(title);
         if (title !== '') {
-            title = `${this._title} | Angular Material Extensions`;
+            title = `${this._title} | Angular Material Extras`;
         } else {
             title = this._originalTitle;
         }
@@ -25,7 +25,7 @@ export class ComponentPageTitle {
 
     constructor(private bodyTitle: Title) {}
 
-    capitalizeTitle(title: string): string {
+    private capitalizeTitle(title: string): string {
         return title
             .split('-')
             .join(' ')

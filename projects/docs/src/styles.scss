@@ -2,6 +2,7 @@
 
 @import '~@angular/material/theming';
 
+@import './styles/app-theme';
 @import './styles/constants';
 @import './styles/reboot';
 
@@ -13,6 +14,7 @@ $accent: mat-palette($mat-pink, A200, A100, A400);
 $theme: mat-light-theme($primary, $accent);
 
 @include angular-material-theme($theme);
+@include extensions-docs-app-theme($theme);
 
 .docs-theme-dark {
     $primary: mat-palette($mat-pink);
@@ -20,5 +22,5 @@ $theme: mat-light-theme($primary, $accent);
     $theme: mat-dark-theme($primary, $accent);
 
     @include angular-material-theme($theme);
-    // @include extensions-docs-app-theme($theme);
+    @include extensions-docs-app-theme($theme);
 }

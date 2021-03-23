@@ -6,10 +6,10 @@
         <span>Material Extras</span>
     </a>
 
-    <a mat-button class="docs-navbar-link" routerLink="components" fxHide.lt-sm>Components</a>
-    <a mat-button class="docs-navbar-link" routerLink="guides" fxHide.lt-sm>Guides</a>
+    <a mat-button class="docs-navbar-link" routerLink="components">Components</a>
+    <a mat-button class="docs-navbar-link " routerLink="guides">Guides</a>
 
-    <button mat-icon-button [matMenuTriggerFor]="menu" fxHide.gt-xs>
+    <!-- <button mat-icon-button [matMenuTriggerFor]="menu" fxHide.gt-xs>
         <mat-icon>more_vert</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
@@ -17,7 +17,8 @@
         <button mat-menu-item routerLink="guides">Guides</button>
     </mat-menu>
 
-    <span fxFlex></span>
+    <span fxFlex></span> -->
+    <span style="flex: 1 auto;"></span>
 
     <button mat-icon-button (click)="toggleTheme()" matTooltip="Toggle the theme">
         <mat-icon>{{dark ? 'brightness_3' : 'wb_sunny'}}</mat-icon>

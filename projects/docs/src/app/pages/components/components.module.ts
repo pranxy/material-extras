@@ -8,10 +8,10 @@ const routes = [
         path: '',
         component: ComponentViewerComponent,
         children: [
-            //   {
-            //     path: 'alert',
-            //     loadChildren: () => import('./alert/alert').then(m => m.AlertModule),
-            //   },
+            {
+                path: 'select',
+                loadChildren: () => import('./select/select.module').then(m => m.SelectModule),
+            },
             //   {
             //     path: 'button',
             //     loadChildren: () => import('./button/button').then(m => m.ButtonModule),

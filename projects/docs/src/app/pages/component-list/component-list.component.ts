@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Params } from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
+import { ActivatedRoute, Params } from '@angular/router';
+import { combineLatest, Observable, Subscription } from 'rxjs';
+import { ComponentPageTitle } from '../../services/page-title.service';
 import { COMPONENTS_MENU } from '../component-nav/component-nav.component';
 
 @Component({
@@ -13,7 +14,13 @@ export class ComponentListComponent implements OnInit {
 
     list = COMPONENTS_MENU;
 
-    constructor() {}
+    constructor(public _componentPageTitle: ComponentPageTitle, private _route: ActivatedRoute) {}
 
-    ngOnInit(): void {}
+    ngOnInit(): void {
+        this.params = combineLatest([this._route.pathFromRoot.map(route => route.params)]);
+
+        this.routeParamSubscription = this.params.subscribe(params => {
+            this._componentPageTitle.title = 'components';
+        });
+    }
 }

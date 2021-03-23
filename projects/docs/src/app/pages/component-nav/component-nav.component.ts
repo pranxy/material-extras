@@ -5,29 +5,14 @@ export const COMPONENTS_MENU = [
         title: 'Basic',
         children: [
             {
-                id: 'alert',
-                name: 'Alert',
-                summary: 'Provide contextual feedback messages for typical user actions.',
+                id: 'select',
+                name: 'Select',
+                summary: 'Improved mat-select with more options similar to ng-select',
             },
             {
-                id: 'button',
-                name: 'Button',
-                summary: 'Provide a material button loading directive.',
-            },
-        ],
-    },
-    {
-        title: 'Experimental',
-        children: [
-            {
-                id: 'form-group',
-                name: 'Form Group',
-                summary: 'Material form field with Fluent UI style.',
-            },
-            {
-                id: 'text3d',
-                name: 'Text 3D',
-                summary: 'Experimental component for 3d text.',
+                id: 'drawer',
+                name: 'Drawer',
+                summary: 'Flexible drawer container',
             },
         ],
     },
