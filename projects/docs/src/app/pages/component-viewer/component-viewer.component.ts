@@ -10,14 +10,14 @@ import { ComponentPageTitle } from '../../services/page-title.service';
 })
 export class ComponentViewerComponent implements OnDestroy {
     sections: Set<string> = new Set(['overview', 'api']);
-    private _destroyed = new Subject();
+    private destroyed = new Subject();
 
     componentId = '';
 
     constructor(
         _route: ActivatedRoute,
         private router: Router,
-        public _componentPageTitle: ComponentPageTitle
+        public componentPageTitle: ComponentPageTitle
     ) {
         const routeAndParentParams = [_route.params];
         if (_route.parent) {
@@ -27,13 +27,13 @@ export class ComponentViewerComponent implements OnDestroy {
         this.router.events.subscribe(s => {
             if (s instanceof NavigationEnd) {
                 this.componentId = s.url.split('/')[2];
-                this._componentPageTitle.title = this.componentId;
+                this.componentPageTitle.title = this.componentId;
             }
         });
     }
 
     ngOnDestroy(): void {
-        this._destroyed.next();
-        this._destroyed.complete();
+        this.destroyed.next();
+        this.destroyed.complete();
     }
 }

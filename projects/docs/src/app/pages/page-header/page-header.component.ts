@@ -7,11 +7,11 @@ import { ComponentPageTitle } from '../../services/page-title.service';
     styleUrls: ['./page-header.component.scss'],
 })
 export class PageHeaderComponent {
-    constructor(public _componentPageTitle: ComponentPageTitle) {}
+    constructor(public componentPageTitle: ComponentPageTitle) {}
 
     @Output() toggleSidenav = new EventEmitter<void>();
 
     getTitle() {
-        return this._componentPageTitle.title;
+        return this.componentPageTitle.title;
     }
 }

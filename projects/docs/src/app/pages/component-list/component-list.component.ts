@@ -14,13 +14,13 @@ export class ComponentListComponent implements OnInit {
 
     list = COMPONENTS_MENU;
 
-    constructor(public _componentPageTitle: ComponentPageTitle, private _route: ActivatedRoute) {}
+    constructor(public componentPageTitle: ComponentPageTitle, private route: ActivatedRoute) {}
 
     ngOnInit(): void {
-        this.params = combineLatest([this._route.pathFromRoot.map(route => route.params)]);
+        this.params = combineLatest([this.route.pathFromRoot.map(route => route.params)]);
 
         this.routeParamSubscription = this.params.subscribe(params => {
-            this._componentPageTitle.title = 'components';
+            this.componentPageTitle.title = 'components';
         });
     }
 }
