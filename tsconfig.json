@@ -2,13 +2,13 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
+    "baseUrl": "projects",
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
     "paths": {
-      "@pranxy/mat-extras": ["extras"],
-      "@pranxy/mat-extras/*": ["extras/*"]
+      "@pranxy/material-extras/select": ["extras/select/public-api.ts"],
+      "@pranxy/material-extras/drawer": ["extras/drawer/public-api.ts"],
     },
     "downlevelIteration": true,
     "experimentalDecorators": true,

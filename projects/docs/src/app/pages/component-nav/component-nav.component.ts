@@ -1,22 +1,20 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
-export const COMPONENTS_MENU = [
-    {
-        title: 'Basic',
-        children: [
-            {
-                id: 'select',
-                name: 'Select',
-                summary: 'Improved mat-select with more options similar to ng-select',
-            },
-            {
-                id: 'drawer',
-                name: 'Drawer',
-                summary: 'Flexible drawer container',
-            },
-        ],
-    },
-];
+export const COMPONENTS_MENU = {
+    title: 'Basic',
+    children: [
+        {
+            id: 'select',
+            name: 'Select',
+            summary: 'Improved mat-select with more options similar to ng-select',
+        },
+        // {
+        //     id: 'drawer',
+        //     name: 'Drawer',
+        //     summary: 'Flexible drawer container',
+        // },
+    ],
+};
 
 @Component({
     selector: 'app-component-nav',

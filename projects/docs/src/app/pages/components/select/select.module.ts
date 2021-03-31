@@ -1,41 +1,12 @@
-import { Component, NgModule } from '@angular/core';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { PmeSelectModule } from '@pranxy/material-extras/select';
 import { SharedModule } from '../../../shared';
-
-@Component({
-    selector: 'app-select-overview',
-    templateUrl: './select-overview.html',
-})
-export class SelectOverviewComponent {
-    constructor(public route: ActivatedRoute) {}
-}
-
-@Component({
-    selector: 'app-select-api',
-    templateUrl: './select-api.html',
-})
-export class SelectApiComponent {
-    constructor(public route: ActivatedRoute) {}
-}
+import { SelectComponent } from './select.component';
+import { SelectRoutingModule } from './select.routing';
 
 @NgModule({
-    declarations: [],
-    imports: [
-        SharedModule,
-        RouterModule.forChild([
-            { path: '', redirectTo: 'overview', pathMatch: 'full' },
-            {
-                path: 'overview',
-                component: SelectOverviewComponent,
-                pathMatch: 'full',
-            },
-            //   {
-            //     path: 'api',
-            //     component: ButtonApiComponent,
-            //     pathMatch: 'full',
-            //   },
-            { path: '**', redirectTo: 'overview' },
-        ]),
-    ],
+    declarations: [SelectComponent],
+    imports: [CommonModule, SelectRoutingModule, SharedModule, PmeSelectModule],
 })
 export class SelectModule {}

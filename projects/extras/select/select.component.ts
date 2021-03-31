@@ -15,7 +15,8 @@ import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/f
     ],
 })
 export class PmeSelectComponent implements ControlValueAccessor, OnInit, OnDestroy {
-    @Input() label = '';
+    @Input() label = 'Test label';
+    @Input() placeholder = 'Test placeholder';
     @Input() items = [];
     @Input() appearance = 'outline';
 
