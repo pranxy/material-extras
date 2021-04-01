@@ -10,6 +10,9 @@
   "bugs": {
     "url": "https://github.com/pranxy/material-extras/issues"
   },
+  "publishConfig": {
+    "registry":"https://npm.pkg.github.com"
+  },
   "keywords": [
     "angular",
     "angular-material",
