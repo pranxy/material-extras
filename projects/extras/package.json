@@ -1,6 +1,7 @@
 {
   "name": "@pranxy/material-extras",
   "version": "11.0.1",
+  "description": "Angular Material based components",
   "repository": {
     "type": "git",
     "url": "git@github.com:pranxy/material-extras.git"
@@ -10,9 +11,7 @@
   "bugs": {
     "url": "https://github.com/pranxy/material-extras/issues"
   },
-  "publishConfig": {
-    "registry":"https://npm.pkg.github.com"
-  },
+  "homepage": "https://pranxy.github.io/material-extras/",
   "keywords": [
     "angular",
     "angular-material",

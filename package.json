@@ -8,9 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "build:lib": "ng build extras --prod",
-    "build:docs": "ng build docs --prod --base-href=/docs/",
-    "publish:demo": "npx angular-cli-ghpages --dir=./dist/docs",
-    "deploy": "ng build docs --prod --base-href=/material-extras/"
+    "deploy": "ng build docs --prod --base-href=/material-extras/ && cp projects/extras/README.md /dist/docs",
+    "publish": "npm run build:lib && cd dist/extras && npm publish --access public"
   },
   "private": true,
   "dependencies": {
