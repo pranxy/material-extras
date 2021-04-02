@@ -23,6 +23,7 @@ jobs:
       run: |
         npm install
         npm run-script deploy
+        cp dist/docs/index.html dist/docs/404.html
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@4.1.0
       with:
