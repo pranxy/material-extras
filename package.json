@@ -8,8 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "build:lib": "ng build extras --prod",
-    "deploy": "ng build docs --prod --base-href=/material-extras/ && cp projects/extras/README.md dist/docs",
-    "publish": "npm run build:lib && cd dist/extras && npm publish --access public"
+    "deploy": "ng build docs --prod --base-href=/material-extras/",
+    "publish": "npm run build:lib && cp README.md dist/extras && cd dist/extras && npm publish --access public"
   },
   "private": true,
   "dependencies": {

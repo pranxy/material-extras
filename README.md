@@ -1,27 +1,54 @@
-# MaterialExtras
+# Pranxy Material Extras
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.5.
 
-## Development server
+[![npm](https://img.shields.io/npm/v/@pranxy/material-extras.svg)](https://www.npmjs.com/package/@pranxy/material-extras)
+[![GitHub Release Date](https://img.shields.io/github/release-date/pranxy/material-extras)](https://github.com/pranxy/material-extras/releases)
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/pranxy/extensions/blob/dev/LICENSE)
+![build status](https://github.com/pranxy/sandbox/actions/workflows/build.yml/badge.svg)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+The Pranxy Material Extras is an extended library of Angular Material.
 
-## Code scaffolding
+## Installation
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+At first, you should install the Angular Material and setup it. [Learn more about the setup](https://material.angular.io/guide/getting-started).
 
-## Build
+Install the Material Extras library:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+```bash
+$ npm install @pranxy/material-extras --save
+```
 
-## Running unit tests
+## Setup
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Once installed you need to import the modules you need, e.g. select.
 
-## Running end-to-end tests
+```ts
+import { PmeSelectModule } from '@pranxy/material-extras/select';
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+@NgModule({
+  ...
+  imports: [PmeSelectModule, ...],
+  ...
+})
+export class YourAppModule {
+}
+```
 
-## Further help
+<!-- ## Theming
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+After import modules, you must define a theme. [More details about theming](https://material.angular.io/guide/theming).
+
+```scss
+@import '~@pranxy/extensions/theming';
+
+@include material-extensions-theme($theme);
+@include material-extensions-experimental-theme($theme);
+``` -->
+
+<!-- ## Roadmap
+
+Check [projects](https://github.com/pranxy/extras/projects) to know the develop plans. -->
+
+## License
+
+MIT
