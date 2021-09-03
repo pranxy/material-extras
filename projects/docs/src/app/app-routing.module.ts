@@ -1,35 +1,28 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ComponentsComponent } from './pages/components/components.component';
+import { CanActivateComponentSidenav } from './pages/sidenav/sidenav-can-load-guard';
 
 const routes: Routes = [
     {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'components',
+        loadChildren: () => import('./pages/homepage').then(m => m.HomepageModule),
     },
     {
-        path: 'components',
-        component: ComponentsComponent,
+        path: '404',
+        loadChildren: () => import('./pages/not-found').then(m => m.NotFoundModule),
     },
     {
-        path: 'components',
-        children: [
-            {
-                path: 'select',
-                loadChildren: () => import('./pages/components/select').then(m => m.SelectModule),
-            },
-            // {
-            //     path: 'drawer',
-            //     loadChildren: () => import('./pages/components/drawer').then(m => m.DrawerModule),
-            // },
-        ],
+        path: ':section',
+        canActivate: [CanActivateComponentSidenav],
+        loadChildren: () =>
+            import('./pages/sidenav/sidenav.module').then(m => m.ComponentSidenavModule),
     },
-    { path: '**', redirectTo: '' },
+    { path: '**', redirectTo: '/404' },
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
+    imports: [RouterModule.forRoot(routes)],
     exports: [RouterModule],
 })
 export class AppRoutingModule {}

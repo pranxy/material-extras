@@ -1,26 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono|Roboto:300,400');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 @import '~@angular/material/theming';
 
 @import './styles/app-theme';
-@import './styles/constants';
-@import './styles/reboot';
-
-@include mat-core();
+@import './styles/api';
+// @import './styles/markdown';
+@import './styles/tables';
+@import './styles/general';
 
 // Define the default theme.
 $primary: mat-palette($mat-indigo);
 $accent: mat-palette($mat-pink, A200, A100, A400);
 $theme: mat-light-theme($primary, $accent);
 
+@include mat-core();
+
+@include app-theme($theme);
 @include angular-material-theme($theme);
-@include extensions-docs-app-theme($theme);
 
-.docs-theme-dark {
-    $primary: mat-palette($mat-pink);
-    $accent: mat-palette($mat-blue-grey);
-    $theme: mat-dark-theme($primary, $accent);
-
-    @include angular-material-theme($theme);
-    @include extensions-docs-app-theme($theme);
-}
+// @include mat.all-component-themes($_theme);
+// @include app-theme.theme($_theme);

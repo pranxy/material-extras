@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { COMPONENTS_MENU } from '../component-nav/component-nav.component';
+import { Component, HostBinding, OnInit } from '@angular/core';
+
+const TOP_COMPONENTS = ['select'];
 
 @Component({
     selector: 'app-homepage',
@@ -7,8 +8,13 @@ import { COMPONENTS_MENU } from '../component-nav/component-nav.component';
     styleUrls: ['./homepage.component.scss'],
 })
 export class HomepageComponent implements OnInit {
-    components = COMPONENTS_MENU;
+    @HostBinding('class.main-content') readonly mainContentClass = true;
+
     constructor() {}
 
     ngOnInit() {}
+
+    getTopComponents(): string[] {
+        return TOP_COMPONENTS;
+    }
 }

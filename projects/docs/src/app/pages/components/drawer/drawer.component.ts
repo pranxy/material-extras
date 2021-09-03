@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PmeDrawerService } from '@pranxy/material-extras/drawer';
+import { PmeDrawerService } from 'extras/components/drawer/public-api';
 
 @Component({
     template: '<h2>test component</h2>',

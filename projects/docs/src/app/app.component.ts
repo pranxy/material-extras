@@ -4,7 +4,6 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { COMPONENTS_MENU } from './pages/component-nav/component-nav.component';
 
 @Component({
     selector: 'app-root',
@@ -14,7 +13,6 @@ import { COMPONENTS_MENU } from './pages/component-nav/component-nav.component';
 export class AppComponent implements OnInit {
     @ViewChild('drawer', { static: true }) sidenav: MatSidenav;
 
-    list = COMPONENTS_MENU;
     private isHandset: boolean;
 
     isHandset$: Observable<boolean> = this.breakpointObserver

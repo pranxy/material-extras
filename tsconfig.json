@@ -1,27 +1,27 @@
 /* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
-  "compileOnSave": false,
-  "compilerOptions": {
-    "baseUrl": "projects",
-    "outDir": "./dist/out-tsc",
-    "sourceMap": true,
-    "declaration": false,
-    "paths": {
-      "@pranxy/material-extras/select": ["extras/select/public-api.ts"],
-      "@pranxy/material-extras/drawer": ["extras/drawer/public-api.ts"],
+    "compileOnSave": false,
+    "compilerOptions": {
+        "baseUrl": "projects",
+        "outDir": "./dist/out-tsc",
+        "sourceMap": true,
+        "declaration": false,
+        "paths": {
+            "@pranxy/material-extras/components/select": ["extras/components/select/public-api.ts"],
+            "@pranxy/material-extras/components/select2": [
+                "extras/components/select2/public-api.ts"
+            ],
+            "@pranxy/material-extras/components/drawer": ["extras/components/drawer/public-api.ts"]
+        },
+        "downlevelIteration": true,
+        "experimentalDecorators": true,
+        "moduleResolution": "node",
+        "importHelpers": true,
+        "target": "es2015",
+        "module": "es2020",
+        "lib": ["es2018", "dom"]
     },
-    "downlevelIteration": true,
-    "experimentalDecorators": true,
-    "moduleResolution": "node",
-    "importHelpers": true,
-    "target": "es2015",
-    "module": "es2020",
-    "lib": [
-      "es2018",
-      "dom"
-    ]
-  },
-  "angularCompilerOptions": {
-    "enableI18nLegacyMessageIdFormat": false
-  }
+    "angularCompilerOptions": {
+        "enableI18nLegacyMessageIdFormat": false
+    }
 }

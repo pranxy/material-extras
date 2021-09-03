@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule } from '@angular/router';
-import { PmeSelectModule } from '@pranxy/material-extras/select';
+import { PmeSelectModule } from 'extras/components/select';
 import { MaterialModule } from '../material-modules';
 import { NavbarComponent } from './navbar/navbar.component';
 

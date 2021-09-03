@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { SECTIONS } from '../documentation-items';
+
+const SECTIONS_KEYS = Object.keys(SECTIONS);
 
 @Component({
     selector: 'app-navbar',
@@ -11,6 +14,14 @@ export class NavbarComponent implements OnInit {
     constructor() {}
 
     ngOnInit() {}
+
+    get sections() {
+        return SECTIONS;
+    }
+
+    get sectionKeys() {
+        return SECTIONS_KEYS;
+    }
 
     toggleTheme() {
         this.dark = !this.dark;

@@ -1,8 +1,11 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, NgModule, Output } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { ComponentPageTitle } from '../../services/page-title.service';
 
 @Component({
-    selector: 'app-page-header',
+    // eslint-disable-next-line @angular-eslint/component-selector
+    selector: 'component-page-header',
     templateUrl: './page-header.component.html',
     styleUrls: ['./page-header.component.scss'],
 })
@@ -15,3 +18,10 @@ export class PageHeaderComponent {
         return this.componentPageTitle.title;
     }
 }
+
+@NgModule({
+    imports: [MatButtonModule, MatIconModule],
+    exports: [PageHeaderComponent],
+    declarations: [PageHeaderComponent],
+})
+export class ComponentHeaderModule {}

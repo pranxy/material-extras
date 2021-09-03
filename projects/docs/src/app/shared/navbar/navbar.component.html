@@ -1,29 +1,42 @@
-<!-- <ng-progress color="white"></ng-progress> -->
-
-<mat-toolbar class="docs-navbar-header" color="primary">
-    <a mat-button class="docs-button" routerLink="/" aria-label="Angular Material">
-        <img class="docs-angular-logo" src="assets/img/angular-white-transparent.svg" alt="angular">
-        <span>Material Extras</span>
+<nav class="docs-navbar-header" aria-label="Top Toolbar">
+    <a mat-button class="docs-button" routerLink="/" aria-label="Angular Material Extras">
+        <img
+            class="docs-angular-logo"
+            src="assets/img/angular-white-transparent.svg"
+            alt="angular"
+        />
+        <span>Material</span>
     </a>
-
-    <a mat-button class="docs-navbar-link" routerLink="components">Components</a>
-
-    <!-- <button mat-icon-button [matMenuTriggerFor]="menu" fxHide.gt-xs>
-        <mat-icon>more_vert</mat-icon>
-    </button>
-    <mat-menu #menu="matMenu">
-        <button mat-menu-item routerLink="components">Components</button>
-        <button mat-menu-item routerLink="guides">Guides</button>
-    </mat-menu>
-
-    <span fxFlex></span> -->
-    <span style="flex: 1 auto;"></span>
-
+    <a
+        mat-button
+        class="docs-navbar-hide-small docs-button"
+        *ngFor="let key of sectionKeys"
+        [routerLink]="key"
+        routerLinkActive="docs-navbar-header-item-selected"
+        >{{ sections[key].name }}</a
+    >
+    <div class="flex-spacer"></div>
     <button mat-icon-button (click)="toggleTheme()" matTooltip="Toggle the theme">
-        <mat-icon>{{dark ? 'brightness_3' : 'wb_sunny'}}</mat-icon>
+        <mat-icon>{{ dark ? 'brightness_3' : 'wb_sunny' }}</mat-icon>
     </button>
 
-    <a mat-icon-button href="https://github.com/pranxy/material-extras" target="_blank">
-        <img alt="angular" src="assets/img/github-circle-white-transparent.svg">
+    <a
+        mat-button
+        class="docs-button docs-navbar-hide-small"
+        href="https://github.com/pranxy/material-extras"
+        target="_blank"
+    >
+        <img
+            class="docs-angular-logo"
+            src="assets/img/github-circle-white-transparent.svg"
+            alt="angular"
+        />
+        GitHub
     </a>
-</mat-toolbar>
+</nav>
+<nav class="docs-navbar docs-navbar-show-small" aria-label="Section Nav Bar">
+    <a mat-button class="docs-navbar-link" *ngFor="let key of sectionKeys" [routerLink]="key">{{
+        sections[key].name
+    }}</a>
+    <a mat-button class="docs-navbar-link" routerLink="guides">Guides</a>
+</nav>

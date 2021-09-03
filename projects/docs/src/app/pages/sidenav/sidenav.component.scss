@@ -1,11 +1,9 @@
 @import '../../../styles/constants';
 
-:host {
+app-component-sidenav {
     display: flex;
     flex-direction: column;
-    flex: 1;
     overflow: auto;
-    -webkit-overflow-scrolling: touch;
 }
 
 .docs-component-viewer-sidenav-container {
@@ -17,10 +15,50 @@
     overflow: auto;
 }
 
+.docs-component-sidenav-inner-content {
+    display: flex;
+    flex-direction: row;
+}
+
 .mat-drawer {
     &::-webkit-scrollbar {
         height: 4px;
         width: 4px;
+    }
+}
+
+.docs-component-viewer-nav {
+    position: sticky;
+    top: 0;
+
+    .docs-component-viewer-nav-content {
+        width: $sidenav-width;
+        height: calc(100vh - 56px);
+        overflow: auto;
+
+        &::-webkit-scrollbar {
+            height: 4px;
+            width: 4px;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0 0 5px 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        li {
+            font-size: 13px;
+            line-height: 16px;
+            margin: 0;
+            padding: 5px 15px 5px 20px;
+        }
+
+        a {
+            display: block;
+            text-decoration: none;
+        }
     }
 }
 
@@ -34,12 +72,6 @@
     display: flex;
     flex-direction: column;
     flex: 1;
-
-    // The rule will match the element following the router-outlet which will be the routed component.
-    router-outlet + * {
-        flex-grow: 1;
-        overflow: auto;
-    }
 }
 
 .docs-component-sidenav-body-content {
@@ -47,11 +79,11 @@
     flex: 1 1 auto;
 }
 
-.mat-list-base {
+div .mat-list-base {
     padding-top: 0;
 }
 
-.docs-component-viewer-nav-content .mat-nav-list .mat-list-item .mat-list-item-content {
+div.docs-component-viewer-nav-content .mat-nav-list .mat-list-item .mat-list-item-content {
     padding-left: 25px;
 }
 
@@ -74,7 +106,7 @@
     }
 }
 
-@media (max-width: $extra-small-breakpoint-width) {
+@media (max-width: 720px) {
     .docs-component-viewer-sidenav-container {
         flex: 1 0 auto;
     }

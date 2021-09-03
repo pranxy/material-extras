@@ -1,32 +1,24 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-
-export const COMPONENTS_MENU = {
-    title: 'Basic',
-    children: [
-        {
-            id: 'select',
-            name: 'Select',
-            summary: 'Improved mat-select with more options similar to ng-select',
-        },
-        // {
-        //     id: 'drawer',
-        //     name: 'Drawer',
-        //     summary: 'Flexible drawer container',
-        // },
-    ],
-};
+import { animate, state, style, transition, trigger } from '@angular/animations';
+import { Component, Input } from '@angular/core';
+import { Params } from '@angular/router';
+import { Observable } from 'rxjs';
+import { DocumentationItems } from '../../shared';
 
 @Component({
     selector: 'app-component-nav',
-    templateUrl: './component-nav.component.html',
-    styleUrls: ['./component-nav.component.scss'],
+    templateUrl: './component-nav.html',
+    animations: [
+        trigger('bodyExpansion', [
+            state('collapsed', style({ height: '0px', display: 'none' })),
+            state('expanded', style({ height: '*', display: 'block' })),
+            transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4,0.0,0.2,1)')),
+        ]),
+    ],
 })
-export class ComponentNavComponent implements OnInit {
-    @Output() navChange = new EventEmitter<any>();
+// eslint-disable-next-line @angular-eslint/component-class-suffix
+export class ComponentNav {
+    @Input() params: Observable<Params> | undefined;
+    currentItemId: string | undefined;
 
-    menus = COMPONENTS_MENU;
-
-    constructor() {}
-
-    ngOnInit(): void {}
+    constructor(public docItems: DocumentationItems) {}
 }

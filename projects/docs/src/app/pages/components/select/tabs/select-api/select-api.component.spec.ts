@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ComponentNavComponent } from './component-nav.component';
+import { SelectApiComponent } from './select-api.component';
 
-describe('ComponentNavComponent', () => {
-  let component: ComponentNavComponent;
-  let fixture: ComponentFixture<ComponentNavComponent>;
+describe('SelectApiComponent', () => {
+  let component: SelectApiComponent;
+  let fixture: ComponentFixture<SelectApiComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ComponentNavComponent ]
+      declarations: [ SelectApiComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ComponentNavComponent);
+    fixture = TestBed.createComponent(SelectApiComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
