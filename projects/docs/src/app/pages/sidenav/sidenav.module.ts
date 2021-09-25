@@ -7,11 +7,7 @@ import {
     ComponentListComponent,
 } from '../component-list/component-list.component';
 import { ComponentNav } from '../component-nav/component-nav.component';
-import {
-    ComponentOverview,
-    ComponentViewer,
-    ComponentViewerModule,
-} from '../component-viewer/component-viewer';
+import { ComponentViewerModule } from '../component-viewer/component-viewer';
 import { ComponentHeaderModule } from '../page-header/page-header.component';
 import { SidenavComponent } from './sidenav.component';
 
@@ -27,12 +23,9 @@ const routes = [
                 children: [{ path: '', component: ComponentListComponent }],
             },
             {
-                path: ':id',
-                component: ComponentViewer,
-                children: [
-                    { path: '', redirectTo: 'overview', pathMatch: 'full' },
-                    { path: 'overview', component: ComponentOverview, pathMatch: 'full' },
-                ],
+                path: '',
+                loadChildren: () =>
+                    import('../components/components.module').then(m => m.ComponentsModule),
             },
             { path: '**', redirectTo: '/404' },
         ],

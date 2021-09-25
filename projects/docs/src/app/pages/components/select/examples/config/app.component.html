@@ -1,0 +1,22 @@
+efrqwergfewrgerg
+<!--
+ <form [formGroup]="form">
+    <mat-form-field [appearance]="'outline'">
+        <mat-label>select2 test</mat-label>
+        <pme-select2 formControlName="select" [clearable]="true" [multiple]="true">
+            <mat-option *ngFor="let item of items2" [value]="item">{{ item }}</mat-option>
+        </pme-select2>
+    </mat-form-field>
+
+</form> -->
+<!-- <mat-form-field [appearance]="'outline'">
+    <mat-label>select2 test</mat-label>
+    <mat-select formControlName="select2">
+        <mat-option *ngFor="let item of items" [value]="item.id">{{item.label}}</mat-option>
+    </mat-select>
+</mat-form-field> -->
+
+<mat-form-field appearance="outline">
+    <input id="pickerId" matInput type="time" />
+    <button mat-icon-button appTimePicker matSuffix><mat-icon>schedule</mat-icon></button>
+</mat-form-field>

@@ -50,10 +50,11 @@ const DOCS: { [key: string]: DocItem[] } = {
             id: 'select',
             name: 'Select',
             summary: 'Suggests relevant options as the user types.',
-            // exampleSpecs: {
-            //   prefix: 'autocomplete-',
-            // },
-            // additionalApiDocs: [{name: 'Testing', path: 'material-autocomplete-testing.html'}],
+        },
+        {
+            id: 'drawer',
+            name: 'Drawer',
+            summary: 'Open a component drawer.',
         },
     ],
     [DIRECTIVES]: [
@@ -61,9 +62,6 @@ const DOCS: { [key: string]: DocItem[] } = {
             id: 'form-control',
             name: 'Form Control',
             summary: 'Utilities for screen readers, focus and more.',
-            //   exampleSpecs: {
-            //     prefix: 'focus-monitor-',
-            //   },
         },
     ],
 };

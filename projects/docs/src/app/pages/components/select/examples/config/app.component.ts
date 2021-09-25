@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
-    templateUrl: './select-overview.html',
-    styleUrls: ['./select.component.scss'],
+    // eslint-disable-next-line @angular-eslint/component-selector
+    selector: 'select-example',
+    templateUrl: './app.component.html',
+    //   styleUrls: ['./app.component.scss'],
 })
-export class SelectComponent {
+export class AppComponent {
     items = [
         { id: 1, label: 'Example 1' },
         { id: 2, label: 'Example 2' },
@@ -16,18 +17,10 @@ export class SelectComponent {
 
     selectedItem = new FormControl('oi1');
     form: FormGroup;
-    constructor(public route: ActivatedRoute, private fb: FormBuilder) {
+    constructor(private fb: FormBuilder) {
         this.form = this.fb.group({
             select: [['oi1'], []],
             select2: ['oi1', []],
         });
     }
-}
-
-@Component({
-    selector: 'app-select-api',
-    templateUrl: './select-api.html',
-})
-export class SelectApiComponent {
-    constructor(public route: ActivatedRoute) {}
 }

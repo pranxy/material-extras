@@ -2,7 +2,11 @@
 
 @import '../app/pages/component-nav/component-nav-theme';
 @import '../app/pages/component-list/component-list-theme';
+@import '../app/shared/example-viewer/example-viewer-theme';
 @import '../app/shared/navbar/navbar-theme';
+
+@import './highlightjs/material-light';
+@import './highlightjs/material-dark';
 
 @mixin app-theme($theme) {
     $primary: map-get($theme, primary);
@@ -47,6 +51,8 @@
     @include component-viewer-nav-theme($theme);
     // @include component-viewer-sidenav-theme($theme);
     // @include home-page-theme($theme);
-    // @include example-viewer-theme($theme);
+    @include example-viewer-theme($theme);
     // @include table-of-contents-theme($theme);
+
+    @include highlightjs-material-light();
 }
