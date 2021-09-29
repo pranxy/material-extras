@@ -15,7 +15,7 @@ const SMALL_WIDTH_BREAKPOINT = 959;
     styleUrls: ['./sidenav.component.scss'],
     encapsulation: ViewEncapsulation.None,
 })
-export class SidenavComponent implements OnInit, OnDestroy {
+export class ComponentSidenav implements OnInit, OnDestroy {
     @ViewChild(MatSidenav) sidenav!: MatSidenav;
 
     isExtraScreenSmall: Observable<boolean>;

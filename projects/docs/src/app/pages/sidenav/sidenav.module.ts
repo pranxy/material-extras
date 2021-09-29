@@ -9,14 +9,14 @@ import {
 import { ComponentNav } from '../component-nav/component-nav.component';
 import { ComponentViewerModule } from '../component-viewer/component-viewer';
 import { ComponentHeaderModule } from '../page-header/page-header.component';
-import { SidenavComponent } from './sidenav.component';
+import { ComponentSidenav } from './sidenav.component';
 
 const routes = [
     {
         path: '',
-        component: SidenavComponent,
+        component: ComponentSidenav,
         children: [
-            { path: 'component/:id', redirectTo: ':id', pathMatch: 'full' },
+            // { path: 'component/:id', redirectTo: ':id', pathMatch: 'full' },
             { path: '', redirectTo: 'categories', pathMatch: 'full' },
             {
                 path: 'categories',
@@ -27,7 +27,8 @@ const routes = [
                 loadChildren: () =>
                     import('../components/components.module').then(m => m.ComponentsModule),
             },
-            { path: '**', redirectTo: '/404' },
+            { path: '**', redirectTo: 'categories' },
+            // { path: '**', redirectTo: '/404' },
         ],
     },
 ];
@@ -41,6 +42,6 @@ const routes = [
         ComponentViewerModule,
         ComponentHeaderModule,
     ],
-    declarations: [SidenavComponent, ComponentNav],
+    declarations: [ComponentSidenav, ComponentNav],
 })
 export class ComponentSidenavModule {}

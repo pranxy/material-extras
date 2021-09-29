@@ -51,11 +51,11 @@ const DOCS: { [key: string]: DocItem[] } = {
             name: 'Select',
             summary: 'Suggests relevant options as the user types.',
         },
-        {
-            id: 'drawer',
-            name: 'Drawer',
-            summary: 'Open a component drawer.',
-        },
+        // {
+        //     id: 'drawer',
+        //     name: 'Drawer',
+        //     summary: 'Open a component drawer.',
+        // },
     ],
     [DIRECTIVES]: [
         {

@@ -1,0 +1,9 @@
+<editor
+    [formControl]="inputCtrl"
+    [init]="tinyMceInit"
+    *ngIf="loadTinyMce"
+    [disabled]="disabled"
+    (onDirty)="(true)"
+    (onFocusIn)="focused = true"
+    (onFocusOut)="focused = false"
+></editor>

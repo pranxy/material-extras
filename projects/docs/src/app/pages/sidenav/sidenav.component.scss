@@ -1,24 +1,24 @@
 @import '../../../styles/constants';
 
-app-component-sidenav {
-    display: flex;
-    flex-direction: column;
-    overflow: auto;
-}
+// app-component-sidenav {
+//     display: flex;
+//     flex-direction: column;
+//     overflow: auto;
+// }
 
-.docs-component-viewer-sidenav-container {
-    flex: 1;
-    box-sizing: border-box;
-}
+// .docs-component-viewer-sidenav-container {
+//     flex: 1;
+//     box-sizing: border-box;
+// }
 
-.docs-component-viewer-sidenav {
-    overflow: auto;
-}
+// .docs-component-viewer-sidenav {
+//     overflow: auto;
+// }
 
-.docs-component-sidenav-inner-content {
-    display: flex;
-    flex-direction: row;
-}
+// .docs-component-sidenav-inner-content {
+//     display: flex;
+//     flex-direction: row;
+// }
 
 .mat-drawer {
     &::-webkit-scrollbar {
@@ -41,24 +41,102 @@ app-component-sidenav {
             width: 4px;
         }
 
-        ul {
-            list-style-type: none;
-            margin: 0 0 5px 0;
-            padding: 0;
-            overflow: hidden;
-        }
+        //         ul {
+        //             list-style-type: none;
+        //             margin: 0 0 5px 0;
+        //             padding: 0;
+        //             overflow: hidden;
+        //         }
 
-        li {
-            font-size: 13px;
-            line-height: 16px;
-            margin: 0;
-            padding: 5px 15px 5px 20px;
-        }
+        //         li {
+        //             font-size: 13px;
+        //             line-height: 16px;
+        //             margin: 0;
+        //             padding: 5px 15px 5px 20px;
+        //         }
 
-        a {
-            display: block;
-            text-decoration: none;
-        }
+        //         a {
+        //             display: block;
+        //             text-decoration: none;
+        //         }
+    }
+}
+
+// .docs-component-sidenav-content {
+//     display: flex;
+//     flex-direction: column;
+//     min-height: 100%;
+// }
+
+// .docs-component-sidenav-inner-content {
+//     display: flex;
+//     flex-direction: column;
+//     flex: 1;
+// }
+
+// .docs-component-sidenav-body-content {
+//     display: flex;
+//     flex: 1 1 auto;
+// }
+
+// div .mat-list-base {
+//     padding-top: 0;
+// }
+
+// div.docs-component-viewer-nav-content .mat-nav-list .mat-list-item .mat-list-item-content {
+//     padding-left: 25px;
+// }
+
+// @media (max-width: $small-breakpoint-width) {
+//     // Add specific rule to prevent default rule conflict
+//     .docs-component-viewer-sidenav-container .docs-component-viewer-sidenav {
+//         // position right above the content
+//         z-index: 4;
+//     }
+
+//     .docs-component-viewer-nav {
+//         position: relative;
+//         top: 0;
+
+//         .docs-component-viewer-nav-content {
+//             box-sizing: border-box;
+//             margin: 0;
+//             max-height: initial;
+//         }
+//     }
+// }
+
+// @media (max-width: 720px) {
+//     .docs-component-viewer-sidenav-container {
+//         flex: 1 0 auto;
+//     }
+
+//     .docs-component-sidenav-body-content {
+//         flex-direction: column;
+//     }
+// }
+
+app-component-sidenav {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.docs-component-viewer-sidenav-container {
+    flex: 1;
+    box-sizing: border-box;
+}
+
+.docs-component-viewer-sidenav {
+    overflow: auto;
+}
+
+.mat-drawer {
+    &::-webkit-scrollbar {
+        height: 4px;
+        width: 4px;
     }
 }
 
@@ -72,6 +150,12 @@ app-component-sidenav {
     display: flex;
     flex-direction: column;
     flex: 1;
+
+    // The rule will match the element following the router-outlet which will be the routed component.
+    router-outlet + * {
+        flex-grow: 1;
+        overflow: auto;
+    }
 }
 
 .docs-component-sidenav-body-content {
@@ -79,11 +163,11 @@ app-component-sidenav {
     flex: 1 1 auto;
 }
 
-div .mat-list-base {
+.mat-list-base {
     padding-top: 0;
 }
 
-div.docs-component-viewer-nav-content .mat-nav-list .mat-list-item .mat-list-item-content {
+.docs-component-viewer-nav-content .mat-nav-list .mat-list-item .mat-list-item-content {
     padding-left: 25px;
 }
 
@@ -106,7 +190,7 @@ div.docs-component-viewer-nav-content .mat-nav-list .mat-list-item .mat-list-ite
     }
 }
 
-@media (max-width: 720px) {
+@media (max-width: $extra-small-breakpoint-width) {
     .docs-component-viewer-sidenav-container {
         flex: 1 0 auto;
     }

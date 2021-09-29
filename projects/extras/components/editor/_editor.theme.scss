@@ -1,0 +1,32 @@
+@mixin hydrogen-editor-theme($theme) {
+    // TODO: copy from variables.scss -- this value should come from DS
+    $card-radius: 5px;
+
+    .h-editor:not(.h-editor-form-field) .tox.tox-tinymce {
+        border-radius: $card-radius;
+        border: 1px solid h-get-token($theme, element-color-input-border);
+
+        &::after {
+            border: 2px solid h-get-token($gsc-theme, text-color-primary);
+            border-radius: $card-radius;
+        }
+
+        .tox-editor-header::after {
+            border-top: 2px solid h-get-token($gsc-theme, text-color-primary);
+            border-radius: $card-radius;
+            border-left: 2px solid h-get-token($gsc-theme, text-color-primary);
+            border-right: 2px solid h-get-token($gsc-theme, text-color-primary);
+        }
+    }
+
+    .mat-form-field-disabled .h-editor.h-editor-form-field .tox.tox-tinymce {
+        .tox-editor-header {
+            display: none;
+        }
+        .tox-statusbar,
+        .tox-edit-area iframe {
+            background-color: #f8f9fa;
+            filter: grayscale(1);
+        }
+    }
+}

@@ -10,14 +10,13 @@
             mat-tab-link
             class="docs-component-viewer-section-tab"
             *ngFor="let section of sections"
-            [routerLink]="section.toLowerCase()"
+            [routerLink]="componentId + '/' + section.toLowerCase()"
             routerLinkActive
             #rla="routerLinkActive"
             [active]="rla.isActive"
             >{{ section }}</a
         >
     </nav>
-
     <div class="docs-component-viewer-content">
         <router-outlet></router-outlet>
     </div>

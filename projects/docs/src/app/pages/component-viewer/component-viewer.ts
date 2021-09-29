@@ -10,22 +10,23 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import { MatTabsModule } from '@angular/material/tabs';
-import { ActivatedRoute, Params, Router, RouterModule } from '@angular/router';
-import { combineLatest, Observable, ReplaySubject, Subject } from 'rxjs';
+import { ActivatedRoute, NavigationEnd, Router, RouterModule } from '@angular/router';
+import { Observable, ReplaySubject, Subject } from 'rxjs';
 import { map, skip, takeUntil } from 'rxjs/operators';
 import { ComponentPageTitle } from '../../services/page-title.service';
 import { DocItem, DocumentationItems } from '../../shared';
 
 @Component({
     selector: 'app-component-viewer',
-    templateUrl: './component-viewer.component.html',
-    styleUrls: ['./component-viewer.component.scss'],
+    templateUrl: './component-viewer.html',
+    styleUrls: ['./component-viewer.scss'],
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
 export class ComponentViewer implements OnDestroy {
     componentDocItem = new ReplaySubject<DocItem>(1);
     sections: Set<string> = new Set(['overview', 'api']);
     private destroyed = new Subject();
+    componentId = '';
 
     constructor(
         _route: ActivatedRoute,
@@ -36,33 +37,48 @@ export class ComponentViewer implements OnDestroy {
         const routeAndParentParams = [_route.params];
         if (_route.parent) {
             routeAndParentParams.push(_route.parent.params);
-        } // Listen to changes on the current route for the doc id (e.g. button/checkbox) and the
-        // parent route for the section (material/cdk).
-        combineLatest(routeAndParentParams)
-            .pipe(
-                map((params: Params[]) => ({ id: params[0].id, section: params[1].section })),
-                map(
-                    (docIdAndSection: { id: string; section: string }) => ({
-                        doc: docItems.getItemById(docIdAndSection.id, docIdAndSection.section),
-                        section: docIdAndSection.section,
-                    }),
-                    takeUntil(this.destroyed)
-                )
-            )
-            .subscribe((docItemAndSection: { doc: DocItem | undefined; section: string }) => {
-                if (docItemAndSection.doc !== undefined) {
-                    this.componentDocItem.next(docItemAndSection.doc);
-                    this.componentPageTitle.title = `${docItemAndSection.doc.name}`;
+        }
 
-                    if (docItemAndSection.doc.examples && docItemAndSection.doc.examples.length) {
-                        this.sections.add('examples');
-                    } else {
-                        this.sections.delete('examples');
-                    }
-                } else {
-                    this.router.navigate(['/' + docItemAndSection.section]);
-                }
-            });
+        this.router.events.subscribe(s => {
+            if (s instanceof NavigationEnd) {
+                this.componentId = s.url.split('/')[2];
+                this.componentPageTitle.title = this.componentId;
+            }
+        });
+        // const routeAndParentParams = [_route.params];
+        // if (_route.parent) {
+        //     routeAndParentParams.push(_route.parent.params);
+        // } // Listen to changes on the current route for the doc id (e.g. button/checkbox) and the
+        // // parent route for the section (material/cdk).
+        // combineLatest(routeAndParentParams)
+        //     .pipe(
+        //         map((params: Params[]) => ({ id: params[0].id, section: params[1].section })),
+        //         map(
+        //             (docIdAndSection: { id: string; section: string }) => ({
+        //                 doc: docItems.getItemById(docIdAndSection.id, docIdAndSection.section),
+        //                 section: docIdAndSection.section,
+        //             }),
+        //             takeUntil(this.destroyed)
+        //         )
+        //     )
+        //     .subscribe((docItemAndSection: { doc: DocItem | undefined; section: string }) => {
+        //         console.log(1);
+
+        //         if (docItemAndSection.doc !== undefined) {
+        //             this.componentDocItem.next(docItemAndSection.doc);
+        //             this.componentPageTitle.title = `${docItemAndSection.doc.name}`;
+
+        //             if (docItemAndSection.doc.examples && docItemAndSection.doc.examples.length) {
+        //                 this.sections.add('examples');
+        //             } else {
+        //                 this.sections.delete('examples');
+        //             }
+        //         } else {
+        //             console.log('/' + docItemAndSection.section);
+
+        //             this.router.navigate(['/' + docItemAndSection.section]);
+        //         }
+        //     });
     }
     ngOnDestroy(): void {
         this.destroyed.next();

@@ -8,7 +8,7 @@
         [routerLink]="'/' + section + '/' + component.id"
     >
         <div class="docs-component-category-list-card">
-            <img
+            <!-- <img
                 *ngIf="section === 'components'"
                 class="docs-component-category-list-card-image-wrapper"
                 [src]="'../../../assets/screenshots/' + component.id + '.scene.png'"
@@ -16,7 +16,7 @@
                 alt=""
                 role="presentation"
                 aria-hidden="true"
-            />
+            /> -->
             <div class="docs-component-category-list-card-title">{{ component.name }}</div>
             <div class="docs-component-category-list-card-summary">{{ component.summary }}</div>
         </div>

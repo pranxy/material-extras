@@ -15,7 +15,6 @@ import { DocumentationItems } from '../../shared';
         ]),
     ],
 })
-// eslint-disable-next-line @angular-eslint/component-class-suffix
 export class ComponentNav {
     @Input() params: Observable<Params> | undefined;
     currentItemId: string | undefined;
