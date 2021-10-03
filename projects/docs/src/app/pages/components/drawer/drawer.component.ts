@@ -1,22 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { PmeDrawerService } from 'extras/components/drawer/public-api';
+import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-    template: '<h2>test component</h2>',
+    templateUrl: './drawer-overview.html',
 })
-export class TestComponent {}
+export class DrawerOverviewComponent {
+    constructor(public route: ActivatedRoute) {}
+}
 
 @Component({
-    selector: 'app-drawer',
-    templateUrl: './drawer.component.html',
-    styleUrls: ['./drawer.component.scss'],
+    templateUrl: './drawer-api.html',
 })
-export class DrawerComponent implements OnInit {
-    constructor(private service: PmeDrawerService) {}
-
-    ngOnInit(): void {}
-
-    drawer() {
-        this.service.open(TestComponent).afterClosed().subscribe();
-    }
+export class DrawerApiComponent {
+    constructor(public route: ActivatedRoute) {}
 }

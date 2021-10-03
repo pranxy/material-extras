@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { ErrorStateMatcher, MatCommonModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { HydrogenFormControl } from './hydrogen-form-control.directive';
+import { HydrogenFormControl } from './form-control.directive';
 
 @NgModule({
     imports: [MatFormFieldModule, MatCommonModule],

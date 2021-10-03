@@ -7,11 +7,8 @@
         "sourceMap": true,
         "declaration": false,
         "paths": {
-            "@pranxy/material-extras/components/select": ["extras/components/select/public-api.ts"],
-            "@pranxy/material-extras/components/select2": [
-                "extras/components/select2/public-api.ts"
-            ],
-            "@pranxy/material-extras/components/drawer": ["extras/components/drawer/public-api.ts"]
+            "@pranxy/material-extras/components/*": ["extras/components/*"],
+            "@pranxy/material-extras/cdk/*": ["extras/cdk/*"],
         },
         "downlevelIteration": true,
         "experimentalDecorators": true,

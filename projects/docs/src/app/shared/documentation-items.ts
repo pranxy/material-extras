@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-const DIRECTIVES = 'directives';
+const CDK = 'cdk';
 const COMPONENTS = 'components';
 
 export interface DocSection {
@@ -36,7 +36,7 @@ export const SECTIONS: { [key: string]: DocSection } = {
             'Angular Material offers a wide variety of UI components based on the <a' +
             ' href="https://material.io/components">Material Design specification</a>',
     },
-    [DIRECTIVES]: {
+    [CDK]: {
         name: 'Directives',
         summary:
             'The Component Dev Kit (CDK) is a set of behavior primitives for building UI' +
@@ -51,13 +51,13 @@ const DOCS: { [key: string]: DocItem[] } = {
             name: 'Select',
             summary: 'Suggests relevant options as the user types.',
         },
-        // {
-        //     id: 'drawer',
-        //     name: 'Drawer',
-        //     summary: 'Open a component drawer.',
-        // },
+        {
+            id: 'drawer',
+            name: 'Drawer',
+            summary: 'Open a component drawer.',
+        },
     ],
-    [DIRECTIVES]: [
+    [CDK]: [
         {
             id: 'form-control',
             name: 'Form Control',
@@ -75,8 +75,8 @@ const processDocs = (packageName: string, docs: DocItem[]): DocItem[] => {
 };
 
 const ALL_COMPONENTS = processDocs('material', DOCS[COMPONENTS]);
-const ALL_DIRECTIVES = processDocs('cdk', DOCS[DIRECTIVES]);
-const ALL_DOCS = [...ALL_COMPONENTS, ...ALL_DIRECTIVES];
+const ALL_CDK = processDocs('cdk', DOCS[CDK]);
+const ALL_DOCS = [...ALL_COMPONENTS, ...ALL_CDK];
 
 @Injectable()
 export class DocumentationItems {
@@ -84,8 +84,8 @@ export class DocumentationItems {
         if (section === COMPONENTS) {
             return ALL_COMPONENTS;
         }
-        if (section === DIRECTIVES) {
-            return ALL_DIRECTIVES;
+        if (section === CDK) {
+            return ALL_CDK;
         }
         return [];
     }
