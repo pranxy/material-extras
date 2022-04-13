@@ -11,26 +11,31 @@ import {
     OnDestroy,
     OnInit,
     Optional,
-    Self
+    Self,
 } from '@angular/core';
-import { ControlValueAccessor, FormControl, FormGroupDirective, NgControl, NgForm } from '@angular/forms';
+import {
+    ControlValueAccessor,
+    FormControl,
+    FormGroupDirective,
+    NgControl,
+    NgForm,
+} from '@angular/forms';
 import {
     CanUpdateErrorState,
     ErrorStateMatcher,
     mixinDisabled,
     mixinDisableRipple,
     mixinErrorState,
-    mixinTabIndex
+    mixinTabIndex,
 } from '@angular/material/core';
 import { MatFormField, MatFormFieldControl, MAT_FORM_FIELD } from '@angular/material/form-field';
-import { APP_CONFIG, IAppConfig } from '@lib-shared/core';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 // Inspired by mat-select code.
 // https://github.com/angular/components/blob/master/src/material/select/select.ts
 
-// tslint:disable-next-line: variable-name
+// eslint-disable-next-line @typescript-eslint/naming-convention
 const TinyMceMixinBase = mixinDisableRipple(
     mixinTabIndex(
         mixinDisabled(
@@ -49,20 +54,21 @@ const TinyMceMixinBase = mixinDisableRipple(
     )
 );
 
-@UntilDestroy()
 @Component({
-    // tslint:disable-next-line: component-selector
-    selector: 'h-editor',
+    selector: 'pme-editor',
     templateUrl: './editor.component.html',
     styleUrls: ['./editor.component.scss'],
-    providers: [{ provide: MatFormFieldControl, useExisting: HydrogenEditor }],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    providers: [{ provide: MatFormFieldControl, useExisting: PmeEditor }],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
-// tslint:disable-next-line: component-class-suffix
-export class HydrogenEditor extends TinyMceMixinBase implements ControlValueAccessor, OnInit, DoCheck, OnDestroy, CanUpdateErrorState {
+// eslint-disable-next-line @angular-eslint/component-class-suffix
+export class PmeEditor
+    extends TinyMceMixinBase
+    implements ControlValueAccessor, OnInit, DoCheck, OnDestroy, CanUpdateErrorState
+{
     static nextId = 0;
 
-    @HostBinding() id = `tiny-mce-input-${HydrogenEditor.nextId++}`;
+    @HostBinding() id = `tiny-mce-input-${PmeEditor.nextId++}`;
 
     stateChanges = new Subject<void>();
     inputCtrl: FormControl = new FormControl();
@@ -76,6 +82,7 @@ export class HydrogenEditor extends TinyMceMixinBase implements ControlValueAcce
     private _required = false;
     private _focused = false;
     private _placeholder: string;
+    private _destroy = new Subject();
 
     @HostBinding('class')
     get elementClass(): string {
@@ -123,11 +130,10 @@ export class HydrogenEditor extends TinyMceMixinBase implements ControlValueAcce
         @Optional() parentFormGroup: FormGroupDirective,
         @Optional() @Inject(MAT_FORM_FIELD) protected parentFormField: MatFormField,
         @Self() @Optional() ngControl: NgControl,
-        @Inject(APP_CONFIG) private appConfig: IAppConfig,
         private cdr: ChangeDetectorRef
     ) {
         super(elementRef, defaultErrorStateMatcher, parentForm, parentFormGroup, ngControl);
-        this.tinyMceInit = this.appConfig.tinyMceInit;
+        // this.tinyMceInit = this.appConfig.tinyMceInit;
 
         if (this.ngControl) {
             this.ngControl.valueAccessor = this;
@@ -142,7 +148,7 @@ export class HydrogenEditor extends TinyMceMixinBase implements ControlValueAcce
             this.cdr.markForCheck();
         });
 
-        this.inputCtrl.valueChanges.pipe(untilDestroyed(this)).subscribe((value: string) => {
+        this.inputCtrl.valueChanges.pipe(takeUntil(this._destroy)).subscribe((value: string) => {
             this._onChange(value);
             this.cdr.markForCheck();
         });
@@ -156,6 +162,8 @@ export class HydrogenEditor extends TinyMceMixinBase implements ControlValueAcce
 
     ngOnDestroy() {
         this.stateChanges.complete();
+        this._destroy.next();
+        this._destroy.complete();
     }
 
     writeValue(value: any): void {
@@ -166,7 +174,7 @@ export class HydrogenEditor extends TinyMceMixinBase implements ControlValueAcce
         this._onChange = fn;
     }
 
-    registerOnTouched(fn: () => {}): void {
+    registerOnTouched(fn: any): void {
         this._onTouched = fn;
     }
 

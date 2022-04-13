@@ -31,7 +31,8 @@
             "prefix": "pme",
             "style": "camelCase"
           }
-        ]
+        ],
+        "no-underscore-dangle": "off"
       }
     },
     {
