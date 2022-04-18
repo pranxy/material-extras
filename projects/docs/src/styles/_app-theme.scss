@@ -1,4 +1,4 @@
-@import '~@angular/material/theming';
+@use '@angular/material' as mat;
 
 @import '../app/pages/component-nav/component-nav-theme';
 @import '../app/pages/component-list/component-list-theme';
@@ -14,35 +14,35 @@
     $warn: map-get($theme, warn);
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
-    $next-theme: mat-palette($mat-red);
+    $next-theme: mat.define-palette(mat.$red-palette);
 
     .docs-app-background {
-        background: mat-color($background, background);
+        background: mat.get-color-from-palette($background, background);
     }
 
     .docs-primary-header {
-        background: mat-color($primary);
+        background: mat.get-color-from-palette($primary);
 
         h1 {
-            color: mat-color($primary, default-contrast);
+            color: mat.get-color-from-palette($primary, default-contrast);
         }
     }
 
     .docs-footer {
-        background: mat-color($primary);
-        color: mat-color($primary, default-contrast);
+        background: mat.get-color-from-palette($primary);
+        color: mat.get-color-from-palette($primary, default-contrast);
     }
 
     .docs-help-support {
-        color: mat-color($foreground, secondary-text);
+        color: mat.get-color-from-palette($foreground, secondary-text);
 
         a {
-            color: mat-color($foreground, text);
+            color: mat.get-color-from-palette($foreground, text);
         }
     }
 
     .is-next-version {
-        background: mat-color($next-theme, 900) !important;
+        background: mat.get-color-from-palette($next-theme, 900) !important;
     }
 
     @include nav-bar-theme($theme);

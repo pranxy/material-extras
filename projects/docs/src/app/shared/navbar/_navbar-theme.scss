@@ -1,3 +1,4 @@
+@use '@angular/material' as mat;
 @mixin nav-bar-theme($theme) {
     $primary: map-get($theme, primary);
     $accent: map-get($theme, accent);
@@ -6,16 +7,16 @@
     $foreground: map-get($theme, foreground);
 
     app-navbar {
-        color: mat-color($primary, default-contrast);
+        color: mat.get-color-from-palette($primary, default-contrast);
 
         .docs-navbar,
         .docs-navbar-header {
-            background: mat-color($primary);
+            background: mat.get-color-from-palette($primary);
 
             & a:hover,
             & a:focus {
                 background: rgba(0, 0, 0, 0.4);
-                color: mat-color($accent, 200);
+                color: mat.get-color-from-palette($accent, 200);
             }
 
             .docs-navbar-header-item-selected {
