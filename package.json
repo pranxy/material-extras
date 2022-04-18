@@ -6,7 +6,8 @@
     "start": "ng serve --project=docs",
     "build": "ng build",
     "test": "ng test",
-    "lint": "ng lint",
+    "lint": "npm run lint:ts",
+    "lint:ts": "eslint \"projects/**/*.ts\" --fix",
     "build:lib": "ng build extras --prod",
     "deploy": "ng build docs --prod --base-href=/material-extras/",
     "publish": "npm run build:lib && cp README.md dist/extras && cd dist/extras && npm publish --access public"

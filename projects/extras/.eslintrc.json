@@ -13,7 +13,7 @@
           "projects/extras/tsconfig.lib.json",
           "projects/extras/tsconfig.spec.json"
         ],
-        "createDefaultProgram": true
+        "createDefaultProgram": false
       },
       "rules": {
         "@angular-eslint/component-selector": [
