@@ -55,7 +55,7 @@ export class PmeDrawerComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     renderMethod: 'template' | 'component' = 'component';
-    content: DrawerContent;
+    content: DrawerContent | any;
     context: any;
     animationStateChanged = new EventEmitter<AnimationEvent>();
 
@@ -98,7 +98,7 @@ export class PmeDrawerComponent implements OnInit, AfterViewInit, OnDestroy {
             return;
         }
 
-        this.focusTrap.focusInitialElementWhenReady().then(hasMovedFocus => {
+        this.focusTrap.focusInitialElementWhenReady().then((hasMovedFocus) => {
             // If there were no focusable elements, focus the sidenav itself so the keyboard navigation
             // still works. We need to check that `focus` is a function due to Universal.
             if (!hasMovedFocus && typeof this.elementRef.nativeElement.focus === 'function') {

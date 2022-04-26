@@ -1,5 +1,6 @@
 import { Component, forwardRef, Input, OnDestroy, OnInit } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { MatFormFieldAppearance } from '@angular/material/form-field';
 
 @Component({
     selector: 'pme-select',
@@ -18,7 +19,7 @@ export class PmeSelectComponent implements ControlValueAccessor, OnInit, OnDestr
     @Input() label = 'Test label';
     @Input() placeholder = 'Test placeholder';
     @Input() items = [];
-    @Input() appearance = 'outline';
+    @Input() appearance: MatFormFieldAppearance = 'outline';
 
     @Input() bindLabel = 'label';
     @Input() bindValue = 'code';
@@ -43,11 +44,11 @@ export class PmeSelectComponent implements ControlValueAccessor, OnInit, OnDestr
         const selectedValue = this.input.value;
 
         if (Array.isArray(selectedValue)) {
-            const items = this.items.filter(i => selectedValue.includes(i[this.bindValue]));
+            const items = this.items.filter((i) => selectedValue.includes(i[this.bindValue]));
 
-            return items.map(i => i[this.bindLabel]);
+            return items.map((i) => i[this.bindLabel]);
         } else {
-            const item = this.items.find(i => i[this.bindValue] === this.input.value);
+            const item = this.items.find((i) => i[this.bindValue] === this.input.value);
             return item && [item[this.bindLabel]];
         }
     }
@@ -74,6 +75,6 @@ export class PmeSelectComponent implements ControlValueAccessor, OnInit, OnDestr
     }
 
     ngOnDestroy() {
-        this.subscriptions.forEach(sub => sub.unsubscribe());
+        this.subscriptions.forEach((sub) => sub.unsubscribe());
     }
 }
