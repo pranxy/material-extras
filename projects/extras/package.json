@@ -1,6 +1,6 @@
 {
   "name": "@pranxy/material-extras",
-  "version": "11.0.1",
+  "version": "13.0.0",
   "description": "Angular Material based components",
   "repository": {
     "type": "git",
@@ -21,13 +21,13 @@
     "mat-select"
   ],
   "dependencies": {
-    "tslib": "^2.0.0"
+    "tslib": "^2.3.0"
   },
   "peerDependencies": {
-    "@angular/animations": ">=11.0.0",
-    "@angular/cdk": ">=11.0.0",
-    "@angular/common": ">=11.0.0",
-    "@angular/core": ">=11.0.0",
-    "@angular/material": ">=11.0.0"
+    "@angular/animations": ">=13.0.0",
+    "@angular/cdk": ">=13.0.0",
+    "@angular/common": ">=13.0.0",
+    "@angular/core": ">=13.0.0",
+    "@angular/material": ">=13.0.0"
   }
 }
