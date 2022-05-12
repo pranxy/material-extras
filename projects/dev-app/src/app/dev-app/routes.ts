@@ -52,11 +52,11 @@ export const DEV_APP_ROUTES: Routes = [
     //     path: 'loader',
     //     loadChildren: () => import('../loader/loader-demo.module').then((m) => m.LoaderDemoModule),
     // },
-    // {
-    //     path: 'popover',
-    //     loadChildren: () =>
-    //         import('../popover/popover-demo.module').then((m) => m.PopoverDemoModule),
-    // },
+    {
+        path: 'popover',
+        loadChildren: () =>
+            import('../popover-demo/popover-demo.module').then((m) => m.PopoverDemoModule),
+    },
     // {
     //     path: 'progress',
     //     loadChildren: () =>

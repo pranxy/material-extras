@@ -10,11 +10,15 @@ export const routes: Routes = [
         children: [
             {
                 path: 'select',
-                loadChildren: () => import('./select/select.module').then(m => m.SelectModule),
+                loadChildren: () => import('./select/select.module').then((m) => m.SelectModule),
             },
             {
                 path: 'drawer',
-                loadChildren: () => import('./drawer/drawer.module').then(m => m.DrawerModule),
+                loadChildren: () => import('./drawer/drawer.module').then((m) => m.DrawerModule),
+            },
+            {
+                path: 'popover',
+                loadChildren: () => import('./popover/popover.module').then((m) => m.PopoverModule),
             },
         ],
     },

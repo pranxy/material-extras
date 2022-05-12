@@ -56,6 +56,11 @@ const DOCS: { [key: string]: DocItem[] } = {
             name: 'Drawer',
             summary: 'Open a component drawer.',
         },
+        {
+            id: 'popover',
+            name: 'Popover',
+            summary: 'TODO',
+        },
     ],
     [CDK]: [
         {
@@ -92,6 +97,6 @@ export class DocumentationItems {
 
     getItemById(id: string, section: string): DocItem | undefined {
         const sectionLookup = section === 'cdk' ? 'cdk' : 'material';
-        return ALL_DOCS.find(doc => doc.id === id && doc.packageName === sectionLookup);
+        return ALL_DOCS.find((doc) => doc.id === id && doc.packageName === sectionLookup);
     }
 }

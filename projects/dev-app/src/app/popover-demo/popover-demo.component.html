@@ -1,0 +1,17 @@
+<p>popover-demo works!</p>
+
+<button mat-raised-button [popoverTrigger]="popover">hai</button>
+
+<ng-template #popover>
+    <div
+        style="
+            padding: 12px;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.16);
+            z-index: 999999999;
+            background-color: #fff;
+        "
+    >
+        <p>Popover example</p>
+    </div>
+</ng-template>
