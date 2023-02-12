@@ -293,7 +293,6 @@
       }
     }
   },
-  "defaultProject": "extras",
   "cli": {
     "analytics": false
   }

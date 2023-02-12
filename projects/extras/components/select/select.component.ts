@@ -1,5 +1,5 @@
 import { Component, forwardRef, Input, OnDestroy, OnInit } from '@angular/core';
-import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, UntypedFormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { MatFormFieldAppearance } from '@angular/material/form-field';
 
 @Component({
@@ -28,7 +28,7 @@ export class PmeSelectComponent implements ControlValueAccessor, OnInit, OnDestr
 
     subscriptions = [];
 
-    input = new FormControl(null);
+    input = new UntypedFormControl(null);
 
     constructor() {}
 

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 
 @Component({
     // eslint-disable-next-line @angular-eslint/component-selector
@@ -15,9 +15,9 @@ export class AppComponent {
 
     items2 = ['oi1', 'oi2'];
 
-    selectedItem = new FormControl('oi1');
-    form: FormGroup;
-    constructor(private fb: FormBuilder) {
+    selectedItem = new UntypedFormControl('oi1');
+    form: UntypedFormGroup;
+    constructor(private fb: UntypedFormBuilder) {
         this.form = this.fb.group({
             select: [['oi1'], []],
             select2: ['oi1', []],

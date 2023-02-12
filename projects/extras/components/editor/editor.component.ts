@@ -15,7 +15,7 @@ import {
 } from '@angular/core';
 import {
     ControlValueAccessor,
-    FormControl,
+    UntypedFormControl,
     FormGroupDirective,
     NgControl,
     NgForm,
@@ -71,7 +71,7 @@ export class PmeEditor
     @HostBinding() id = `tiny-mce-input-${PmeEditor.nextId++}`;
 
     stateChanges = new Subject<void>();
-    inputCtrl: FormControl = new FormControl();
+    inputCtrl: UntypedFormControl = new UntypedFormControl();
 
     tinyMceInit: Record<string, any> | undefined;
     loadTinyMce = false; // fixes issue described here: https://github.com/tinymce/tinymce-angular/issues/197

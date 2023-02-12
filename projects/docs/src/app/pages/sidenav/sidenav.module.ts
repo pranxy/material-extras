@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from '../../shared';
 import {
     ComponentCategoryListModule,
@@ -11,7 +11,7 @@ import { ComponentViewerModule } from '../component-viewer/component-viewer';
 import { ComponentHeaderModule } from '../page-header/page-header.component';
 import { ComponentSidenav } from './sidenav.component';
 
-const routes = [
+const routes: Routes = [
     {
         path: '',
         component: ComponentSidenav,
