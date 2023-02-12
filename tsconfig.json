@@ -8,7 +8,12 @@
     "declaration": false,
     "paths": {
       "@pranxy/material-extras/components/*": ["extras/components/*"],
-      "@pranxy/material-extras/cdk/*": ["extras/cdk/*"]
+      "@pranxy/material-extras/cdk/*": [
+        "extras/cdk/*"
+      ],
+      "supabase": [
+        "dist/supabase"
+      ]
     },
     "downlevelIteration": true,
     "experimentalDecorators": true,
