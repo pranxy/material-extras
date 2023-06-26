@@ -15,7 +15,7 @@ import { DEV_APP_ROUTES } from './dev-app/routes';
         BrowserAnimationsModule,
         AppRoutingModule,
         DevAppModule,
-        RouterModule.forRoot(DEV_APP_ROUTES, { relativeLinkResolution: 'legacy' }),
+        RouterModule.forRoot(DEV_APP_ROUTES, {}),
     ],
     providers: [],
     bootstrap: [AppComponent],
