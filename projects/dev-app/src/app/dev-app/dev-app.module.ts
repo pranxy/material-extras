@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
-import { DevAppComponent } from './dev-app.component';
 import { SharedModule } from '../shared.module';
+import { DevAppComponent } from './dev-app.component';
 
 @NgModule({
     imports: [SharedModule],

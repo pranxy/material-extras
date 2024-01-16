@@ -5,48 +5,12 @@ import { DevAppHome } from './dev-app-home';
 export const DEV_APP_ROUTES: Routes = [
     { path: '', component: DevAppHome },
     // {
-    //     path: 'alert',
-    //     loadChildren: () => import('../alert/alert-demo.module').then((m) => m.AlertDemoModule),
-    // },
-    // {
-    //     path: 'button',
-    //     loadChildren: () => import('../button/button-demo.module').then((m) => m.ButtonDemoModule),
-    // },
-    // {
-    //     path: 'checkbox-group',
-    //     loadChildren: () =>
-    //         import('../checkbox-group/checkbox-group-demo.module').then(
-    //             (m) => m.CheckboxGroupDemoModule
-    //         ),
-    // },
-    // {
-    //     path: 'colorpicker',
-    //     loadChildren: () =>
-    //         import('../colorpicker/colorpicker-demo.module').then((m) => m.ColorPickerDemoModule),
-    // },
-    // {
-    //     path: 'datetimepicker',
-    //     loadChildren: () =>
-    //         import('../datetimepicker/datetimepicker-demo.module').then(
-    //             (m) => m.DatetimepickerDemoModule
-    //         ),
-    // },
-    // {
     //     path: 'dialog',
     //     loadChildren: () => import('../dialog/dialog-demo.module').then((m) => m.DialogDemoModule),
     // },
     // {
     //     path: 'drawer',
     //     loadChildren: () => import('../drawer/drawer-demo.module').then((m) => m.DrawerDemoModule),
-    // },
-    // {
-    //     path: 'form-group',
-    //     loadChildren: () =>
-    //         import('../form-group/form-group-demo.module').then((m) => m.FormGroupDemoModule),
-    // },
-    // {
-    //     path: 'grid',
-    //     loadChildren: () => import('../grid/grid-demo.module').then((m) => m.GridDemoModule),
     // },
     // {
     //     path: 'loader',
