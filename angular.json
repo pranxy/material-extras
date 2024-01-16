@@ -3,7 +3,10 @@
   "version": 1,
   "schematics": {
     "@schematics/angular:component": {
-      "style": "scss"
+      "style": "scss",
+      "standalone": true,
+      "changeDetection": "OnPush",
+      "skipTests": true
     },
     "@angular-eslint/schematics:application": {
       "setParserOptionsProject": true
@@ -294,6 +297,39 @@
               "projects/dev-app/src/styles.scss"
             ],
             "scripts": []
+          }
+        }
+      }
+    },
+    "extras-dayjs-adapter": {
+      "projectType": "library",
+      "root": "projects/extras-dayjs-adapter",
+      "sourceRoot": "projects/extras-dayjs-adapter/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/extras-dayjs-adapter/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/extras-dayjs-adapter/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/extras-dayjs-adapter/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/extras-dayjs-adapter/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
           }
         }
       }
