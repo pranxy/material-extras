@@ -7,9 +7,14 @@ import { DirectivesComponent } from './pages/cdk/directives.component';
 import { SharedModule } from './shared';
 
 @NgModule({
-    declarations: [AppComponent, DirectivesComponent],
-    imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule, SharedModule],
-    providers: [],
+    declarations: [AppComponent],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        AppRoutingModule,
+        SharedModule,
+        DirectivesComponent,
+    ],
     bootstrap: [AppComponent],
 })
 export class AppModule {}

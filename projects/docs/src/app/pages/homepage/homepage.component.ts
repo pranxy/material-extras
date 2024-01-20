@@ -1,4 +1,5 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 const TOP_COMPONENTS = ['select'];
 
@@ -6,8 +7,10 @@ const TOP_COMPONENTS = ['select'];
     selector: 'app-homepage',
     templateUrl: './homepage.component.html',
     styleUrls: ['./homepage.component.scss'],
+    standalone: true,
+    imports: [RouterLink],
 })
-export class HomepageComponent implements OnInit {
+export default class HomepageComponent implements OnInit {
     @HostBinding('class.main-content') readonly mainContentClass = true;
 
     constructor() {}

@@ -1,12 +1,9 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { SharedModule } from '../../shared';
-import { ComponentViewer } from '../component-viewer/component-viewer';
+import { Routes } from '@angular/router';
 
-export const routes: Routes = [
+export const COMPONENTS_ROUTES: Routes = [
     {
         path: '',
-        component: ComponentViewer,
+        loadComponent: () => import('../component-viewer/component-viewer'),
         children: [
             // {
             //     path: 'popover',
@@ -30,9 +27,3 @@ export const routes: Routes = [
         ],
     },
 ];
-
-@NgModule({
-    imports: [SharedModule, RouterModule.forChild(routes)],
-    declarations: [],
-})
-export class ComponentsModule {}

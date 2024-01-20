@@ -1,12 +1,14 @@
 import { ChangeDetectionStrategy, Component, HostBinding, NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterLink, RouterModule, Routes } from '@angular/router';
 
 @Component({
     selector: 'app-not-found',
     templateUrl: './not-found.component.html',
     styleUrls: ['./not-found.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [MatButtonModule, RouterLink],
 })
 export class NotFoundComponent {
     @HostBinding('class.main-content') readonly mainContentClass = true;
@@ -15,8 +17,7 @@ export class NotFoundComponent {
 const routes: Routes = [{ path: '', component: NotFoundComponent }];
 
 @NgModule({
-    imports: [MatButtonModule, RouterModule.forChild(routes)],
+    imports: [MatButtonModule, RouterModule.forChild(routes), NotFoundComponent],
     exports: [NotFoundComponent],
-    declarations: [NotFoundComponent],
 })
-export class NotFoundModule {}
+export default class NotFoundModule {}

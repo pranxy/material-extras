@@ -6,8 +6,7 @@ import { PmeDrawerComponent } from './drawer.component';
 import { PmeDrawerService } from './drawer.service';
 
 @NgModule({
-    declarations: [PmeDrawerComponent],
-    imports: [CommonModule, OverlayModule, A11yModule],
+    imports: [CommonModule, OverlayModule, A11yModule, PmeDrawerComponent],
     providers: [PmeDrawerService],
 })
 export class PmeDrawerModule {}

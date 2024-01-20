@@ -6,17 +6,16 @@ const routes: Routes = [
     {
         path: '',
         pathMatch: 'full',
-        loadChildren: () => import('./pages/homepage').then(m => m.HomepageModule),
+        loadComponent: () => import('./pages/homepage/homepage.component'),
     },
     {
         path: '404',
-        loadChildren: () => import('./pages/not-found').then(m => m.NotFoundModule),
+        loadComponent: () => import('./pages/not-found/not-found.component'),
     },
     {
         path: ':section',
         canActivate: [CanActivateComponentSidenav],
-        loadChildren: () =>
-            import('./pages/sidenav/sidenav.module').then(m => m.ComponentSidenavModule),
+        loadChildren: () => import('./pages/sidenav/sidenav.routes').then((m) => m.SIDENAV_ROUTES),
     },
     { path: '**', redirectTo: '/404' },
 ];

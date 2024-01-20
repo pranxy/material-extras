@@ -8,6 +8,8 @@ import { ComponentPageTitle } from '../../services/page-title.service';
     selector: 'component-page-header',
     templateUrl: './page-header.component.html',
     styleUrls: ['./page-header.component.scss'],
+    standalone: true,
+    imports: [MatButtonModule, MatIconModule],
 })
 export class PageHeaderComponent {
     constructor(public componentPageTitle: ComponentPageTitle) {}
@@ -20,8 +22,7 @@ export class PageHeaderComponent {
 }
 
 @NgModule({
-    imports: [MatButtonModule, MatIconModule],
+    imports: [MatButtonModule, MatIconModule, PageHeaderComponent],
     exports: [PageHeaderComponent],
-    declarations: [PageHeaderComponent],
 })
 export class ComponentHeaderModule {}

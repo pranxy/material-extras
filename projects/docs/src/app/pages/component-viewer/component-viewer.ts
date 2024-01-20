@@ -1,5 +1,5 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { CommonModule } from '@angular/common';
+import { AsyncPipe, CommonModule, NgFor, NgIf } from '@angular/common';
 import {
     ChangeDetectorRef,
     Component,
@@ -10,7 +10,15 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import { MatTabsModule } from '@angular/material/tabs';
-import { ActivatedRoute, NavigationEnd, Router, RouterModule } from '@angular/router';
+import {
+    ActivatedRoute,
+    NavigationEnd,
+    Router,
+    RouterLink,
+    RouterLinkActive,
+    RouterModule,
+    RouterOutlet,
+} from '@angular/router';
 import { Observable, ReplaySubject, Subject } from 'rxjs';
 import { map, skip, takeUntil } from 'rxjs/operators';
 import { ComponentPageTitle } from '../../services/page-title.service';
@@ -20,9 +28,11 @@ import { DocItem, DocumentationItems } from '../../shared';
     selector: 'app-component-viewer',
     templateUrl: './component-viewer.html',
     styleUrls: ['./component-viewer.scss'],
+    standalone: true,
+    imports: [MatTabsModule, NgFor, RouterLinkActive, RouterLink, RouterOutlet],
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
-export class ComponentViewer implements OnDestroy {
+export default class ComponentViewer implements OnDestroy {
     componentDocItem = new ReplaySubject<DocItem>(1);
     sections: Set<string> = new Set(['overview', 'api']);
     private destroyed = new Subject();
@@ -39,7 +49,7 @@ export class ComponentViewer implements OnDestroy {
             routeAndParentParams.push(_route.parent.params);
         }
 
-        this.router.events.subscribe(s => {
+        this.router.events.subscribe((s) => {
             if (s instanceof NavigationEnd) {
                 this.componentId = s.url.split('/')[2];
                 this.componentPageTitle.title = this.componentId;
@@ -106,7 +116,7 @@ export class ComponentBaseView implements OnInit, OnDestroy {
         private changeDetectorRef: ChangeDetectorRef
     ) {
         this.showToc = breakpointObserver.observe('(max-width: 1200px)').pipe(
-            map(result => {
+            map((result) => {
                 this.changeDetectorRef.detectChanges();
                 return !result.matches;
             })
@@ -147,6 +157,8 @@ export class ComponentBaseView implements OnInit, OnDestroy {
     selector: 'component-overview',
     templateUrl: './component-overview.html',
     encapsulation: ViewEncapsulation.None,
+    standalone: true,
+    imports: [NgIf, AsyncPipe],
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
 export class ComponentOverview extends ComponentBaseView {
@@ -175,6 +187,8 @@ export class ComponentOverview extends ComponentBaseView {
     templateUrl: './component-api.html',
     styleUrls: ['./component-api.scss'],
     encapsulation: ViewEncapsulation.None,
+    standalone: true,
+    imports: [NgIf, AsyncPipe],
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
 export class ComponentApi extends ComponentBaseView {
@@ -197,6 +211,8 @@ export class ComponentApi extends ComponentBaseView {
     selector: 'component-examples',
     templateUrl: './component-examples.html',
     encapsulation: ViewEncapsulation.None,
+    standalone: true,
+    imports: [NgIf, AsyncPipe],
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
 export class ComponentExamples extends ComponentBaseView {
@@ -215,11 +231,12 @@ export class ComponentExamples extends ComponentBaseView {
         RouterModule,
         // DocViewerModule,
         CommonModule,
-        // TableOfContentsModule,
-        // NavigationFocusModule,
+        ComponentViewer,
+        ComponentOverview,
+        ComponentApi,
+        ComponentExamples,
     ],
     exports: [ComponentViewer],
-    declarations: [ComponentViewer, ComponentOverview, ComponentApi, ComponentExamples],
     providers: [DocumentationItems],
 })
 export class ComponentViewerModule {}

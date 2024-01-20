@@ -13,8 +13,8 @@ import { PmeSelectComponent } from './select.component';
         MatFormFieldModule,
         MatSelectModule,
         MatButtonModule,
+        PmeSelectComponent,
     ],
-    declarations: [PmeSelectComponent],
     exports: [PmeSelectComponent],
 })
 export class PmeSelectModule {}

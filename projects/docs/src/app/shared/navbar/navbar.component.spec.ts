@@ -11,8 +11,8 @@ describe('NavbarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NavbarComponent ]
-    })
+    declarations: [NavbarComponent]
+})
     .compileComponents();
   }));
 

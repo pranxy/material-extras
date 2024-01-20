@@ -161,18 +161,6 @@
               "projects/docs/**/*.html"
             ]
           }
-        },
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "projects/docs/e2e/protractor.conf.js",
-            "devServerTarget": "docs:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "docs:serve:production"
-            }
-          }
         }
       }
     },

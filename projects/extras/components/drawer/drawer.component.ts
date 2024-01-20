@@ -12,6 +12,7 @@ import {
     TemplateRef,
 } from '@angular/core';
 import { DrawerContent, PmeDrawerRef } from './drawer-ref';
+import { NgSwitch, NgSwitchCase, NgTemplateOutlet, NgComponentOutlet } from '@angular/common';
 
 const ANIMATION_TIMINGS = '400ms cubic-bezier(0.25, 0.8, 0.25, 1)';
 
@@ -24,23 +25,24 @@ const ANIMATION_TIMINGS = '400ms cubic-bezier(0.25, 0.8, 0.25, 1)';
             // 1. Having a transform can cause elements with ripples or an animated
             //    transform to shift around in Chrome with an RTL layout (see #10023).
             // 2. 3d transforms causes text to appear blurry on IE and Edge.
-            state(
-                'enter',
-                style({
-                    transform: 'none',
-                    visibility: 'visible',
-                })
-            ),
-            state(
-                'leave, void',
-                style({
-                    // Avoids the shadow showing up when closed in SSR.
-                    transform: 'translate3d(100%, 0, 0)',
-                    visibility: 'hidden',
-                })
-            ),
+            state('enter', style({
+                transform: 'none',
+                visibility: 'visible',
+            })),
+            state('leave, void', style({
+                // Avoids the shadow showing up when closed in SSR.
+                transform: 'translate3d(100%, 0, 0)',
+                visibility: 'hidden',
+            })),
             transition('* => *', animate(ANIMATION_TIMINGS)),
         ]),
+    ],
+    standalone: true,
+    imports: [
+        NgSwitch,
+        NgSwitchCase,
+        NgTemplateOutlet,
+        NgComponentOutlet,
     ],
 })
 export class PmeDrawerComponent implements OnInit, AfterViewInit, OnDestroy {

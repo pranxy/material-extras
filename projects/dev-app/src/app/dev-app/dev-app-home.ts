@@ -27,7 +27,7 @@ interface Food {
         </mat-form-field>
     `,
 })
-export class DevAppHome {
+export default class DevAppHome {
     foods: Food[] = [
         { value: 'steak-0', viewValue: 'Steak' },
         { value: 'pizza-1', viewValue: 'Pizza' },

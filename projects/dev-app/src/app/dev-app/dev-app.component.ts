@@ -1,5 +1,11 @@
-import { DOCUMENT } from '@angular/common';
+import { DOCUMENT, NgFor } from '@angular/common';
 import { ChangeDetectorRef, Component, ElementRef, Inject, ViewEncapsulation } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { RouterLinkActive, RouterLink } from '@angular/router';
+import { MatListModule } from '@angular/material/list';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 const isDarkThemeKey = 'ANGULAR_COMPONENTS_DEV_APP_DARK_THEME';
 
@@ -8,6 +14,17 @@ const isDarkThemeKey = 'ANGULAR_COMPONENTS_DEV_APP_DARK_THEME';
     templateUrl: './dev-app.component.html',
     styleUrls: ['./dev-app.component.scss'],
     encapsulation: ViewEncapsulation.None,
+    standalone: true,
+    imports: [
+        MatSidenavModule,
+        MatListModule,
+        NgFor,
+        RouterLinkActive,
+        RouterLink,
+        MatButtonModule,
+        MatToolbarModule,
+        MatIconModule,
+    ],
 })
 export class DevAppComponent {
     readonly darkThemeClass = 'demo-unicorn-dark-theme';

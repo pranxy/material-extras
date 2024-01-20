@@ -2,9 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
-
 import { AppComponent } from './app.component';
-import { DevAppModule } from './dev-app/dev-app.module';
+import { DevAppComponent } from './dev-app/dev-app.component';
 import { DEV_APP_ROUTES } from './dev-app/routes';
 
 @NgModule({
@@ -12,8 +11,8 @@ import { DEV_APP_ROUTES } from './dev-app/routes';
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
-        DevAppModule,
         RouterModule.forRoot(DEV_APP_ROUTES, {}),
+        DevAppComponent,
     ],
     bootstrap: [AppComponent],
 })

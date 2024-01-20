@@ -1,9 +1,7 @@
 import { Routes } from '@angular/router';
-import { DevApp404 } from './dev-app-404';
-import { DevAppHome } from './dev-app-home';
 
 export const DEV_APP_ROUTES: Routes = [
-    { path: '', component: DevAppHome },
+    { path: '', loadComponent: () => import('./dev-app-home') },
     // {
     //     path: 'dialog',
     //     loadChildren: () => import('../dialog/dialog-demo.module').then((m) => m.DialogDemoModule),
@@ -18,8 +16,7 @@ export const DEV_APP_ROUTES: Routes = [
     // },
     {
         path: 'popover',
-        loadChildren: () =>
-            import('../popover-demo/popover-demo.module').then((m) => m.PopoverDemoModule),
+        loadComponent: () => import('../popover-demo/popover-demo.component'),
     },
     // {
     //     path: 'progress',
@@ -47,5 +44,5 @@ export const DEV_APP_ROUTES: Routes = [
     //     loadChildren: () =>
     //         import('../tooltip/tooltip-demo.module').then((m) => m.TooltipDemoModule),
     // },
-    { path: '**', component: DevApp404 },
+    { path: '**', loadComponent: () => import('./dev-app-404') },
 ];

@@ -1,8 +1,8 @@
-import { CommonModule } from '@angular/common';
+import { AsyncPipe, CommonModule, NgFor, NgIf } from '@angular/common';
 import { Component, NgModule, OnDestroy, OnInit } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
-import { ActivatedRoute, Params, RouterModule } from '@angular/router';
-import { combineLatest, Observable, Subscription } from 'rxjs';
+import { ActivatedRoute, Params, RouterLink, RouterModule } from '@angular/router';
+import { Observable, Subscription, combineLatest } from 'rxjs';
 import { ComponentPageTitle } from '../../services/page-title.service';
 import { DocumentationItems, SECTIONS } from '../../shared';
 
@@ -10,8 +10,10 @@ import { DocumentationItems, SECTIONS } from '../../shared';
     selector: 'app-component-category-list',
     templateUrl: './component-list.component.html',
     styleUrls: ['./component-list.component.scss'],
+    standalone: true,
+    imports: [NgIf, NgFor, RouterLink, AsyncPipe],
 })
-export class ComponentListComponent implements OnInit, OnDestroy {
+export default class ComponentListComponent implements OnInit, OnDestroy {
     params: Observable<Params>;
     routeParamSubscription: Subscription;
     categoryListSummary: string | undefined;
@@ -24,11 +26,11 @@ export class ComponentListComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         this.params = combineLatest(
-            this.route.pathFromRoot.map(route => route.params),
+            this.route.pathFromRoot.map((route) => route.params),
             Object.assign
         );
 
-        this.routeParamSubscription = this.params.subscribe(params => {
+        this.routeParamSubscription = this.params.subscribe((params) => {
             console.log(params);
 
             const sectionName = params.section;
@@ -48,9 +50,8 @@ export class ComponentListComponent implements OnInit, OnDestroy {
 }
 
 @NgModule({
-    imports: [CommonModule, MatCardModule, RouterModule],
+    imports: [CommonModule, MatCardModule, RouterModule, ComponentListComponent],
     exports: [ComponentListComponent],
-    declarations: [ComponentListComponent],
     providers: [DocumentationItems],
 })
 export class ComponentCategoryListModule {}

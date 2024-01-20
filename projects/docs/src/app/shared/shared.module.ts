@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { PmePopoverModule } from '@pranxy/material-extras/components/popover';
 import { PmeSelectModule } from 'extras/components/select';
 import { MaterialModule } from '../material-modules';
 import { CopierService } from './copier/copier.service';
@@ -10,7 +9,7 @@ import { ExampleViewer } from './example-viewer/example-viewer';
 import { NavbarComponent } from './navbar/navbar.component';
 
 const components = [NavbarComponent, ExampleViewer, DocViewer];
-const modules = [MaterialModule, PmeSelectModule, PmePopoverModule];
+const modules = [MaterialModule, PmeSelectModule];
 
 @NgModule({
     imports: [CommonModule, RouterModule, ...modules],
